@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 class Stack{
   private:
     int top = -1;
@@ -21,35 +20,32 @@ class Stack{
       return false;
     }
 
-    void resize(int x){
-      int* temp = new int[size *= 2];
+    void resize(){
+      size *= 2;
+      int* temp = new int[size];
         int i;
-        if(temp == NULL){
-          std::cout << "Segmentation fault\n";
-          return;
-        }
         for(i = 0; i < (top + 1); i++){
           temp[i] = stack[i];
         }
-        temp[++top] = x;
         delete[] stack;
         stack = temp;
     }
 
   public:
+    ~Stack() {
+      delete[] stack; 
+    }
+
     void push(int x){
-      if(isempty()){
+      if(size == 0){
         stack = new int[1];
-        if(stack == NULL){
-          std::cout << "Segmentation fault\n";
-          return;
-        }
         top++;
         stack[top] = x;
         size++;
       }
       else if(isfull()){
-        resize(x);
+        resize();
+        stack[++top] = x;
       }
       else if(!isfull()) {
         stack[++top] = x;
@@ -74,9 +70,11 @@ class Stack{
     void pop(){
       std::cout << stack[top--] << std::endl;
     }
+
     void showsize(){
       std::cout << top << std::endl;
     }
+
 };
 
 int phrase(std::string &input){
