@@ -80,7 +80,6 @@ class Stack{
 int phrase(std::string &input){
   int size = input.size();
   std::string number;
-  int number_size = 0;
   for(int i = 0; i < size; i++){
     if(input[i] > 47 && input[i] <58){
       number.push_back(input[i]);
