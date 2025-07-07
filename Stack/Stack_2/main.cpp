@@ -39,8 +39,7 @@ class Stack{
     void push(int x){
       if(size == 0){
         stack = new int[1];
-        top++;
-        stack[top] = x;
+        stack[++top] = x;
         size++;
       }
       else if(isfull()){
