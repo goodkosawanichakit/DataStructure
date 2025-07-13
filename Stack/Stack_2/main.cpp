@@ -5,14 +5,14 @@ class Stack{
     int top = -1;
     int size = 0;
     int *stack = NULL;
-    
+
     bool isfull(){
       if((top + 1) == size){
         return true;
       }
       return false;
     }
-    
+
     bool isempty(){
       if(top == -1){
         return true;
@@ -21,7 +21,7 @@ class Stack{
     }
 
     void resize(){
-      size *= 2;
+      size += 1;
       int* temp = new int[size];
         int i;
         for(i = 0; i < (top + 1); i++){
@@ -33,7 +33,7 @@ class Stack{
 
   public:
     ~Stack() {
-      delete[] stack; 
+      delete[] stack;
     }
 
     void push(int x){
@@ -49,7 +49,6 @@ class Stack{
       else if(!isfull()) {
         stack[++top] = x;
       }
-      return;
     }
 
     void print(){
@@ -67,16 +66,20 @@ class Stack{
     }
 
     void pop(){
+      if(isempty()){
+        std::cout << "-1\n";
+        return;
+      }
       std::cout << stack[top--] << std::endl;
     }
 
     void showsize(){
-      std::cout << top << std::endl;
+      std::cout << top + 1 << std::endl;
     }
 
 };
 
-int phrase(std::string &input){
+int parser(std::string &input){
   int size = input.size();
   std::string number;
   for(int i = 0; i < size; i++){
@@ -98,7 +101,7 @@ int main(){
       case 'X':
         break;
       case 'U':
-        stack.push(phrase(input));
+        stack.push(parser(input));
         continue;
       case 'O':
         stack.pop();

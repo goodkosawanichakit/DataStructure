@@ -34,9 +34,9 @@ int main(){
   int result = is_valid(input);
 
   if(result == 1){
-    std::cout << "error\n";
+    std::cout << "Error\n";
   } else {
-    std::cout << "pass\n";
+    std::cout << "Pass\n";
   }
 
   return 0;

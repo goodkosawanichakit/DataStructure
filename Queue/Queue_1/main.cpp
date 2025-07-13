@@ -31,12 +31,12 @@ class Queue{
 
   public:
     ~Queue() {
-      delete[] queue; 
+      delete[] queue;
     }
     void enqueue(int x){
       if(capacity == 0){
         new_queue();
-        queue[tail++] = x; 
+        queue[tail++] = x;
         return;
       }
       else if(isfull()){
@@ -46,7 +46,7 @@ class Queue{
       }
       queue[tail++] = x;
     }
-    
+
     void print(){
       int i;
       if(isempty()){
@@ -69,6 +69,7 @@ class Queue{
 
     void dequeue(){
       if(isempty()){
+        std::cout << "-1\n";
         return;
       }
       std::cout << queue[front] << std::endl;
@@ -81,7 +82,7 @@ class Queue{
     }
 };
 
-int phrase(std::string &input){
+int parser(std::string &input){
   int size = input.size();
   std::string number;
   for(int i = 0; i < size; i++){
@@ -103,7 +104,7 @@ int main(){
       case 'x':
         break;
       case 'e':
-        queue.enqueue(phrase(input));
+        queue.enqueue(parser(input));
         continue;
       case 'p':
         queue.print();
