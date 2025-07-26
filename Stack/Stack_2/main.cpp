@@ -94,7 +94,7 @@ int main(){
 
   Stack stack;
   std::string input;
-
+  
   while(true){
     getline(std::cin, input);
     switch(input[0]){
