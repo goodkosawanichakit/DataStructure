@@ -57,6 +57,7 @@ class ProcessScheduling {
           std::cout << current_process->PID << ": " << current_process->T << std::endl;
           current_process->T--;
         } else if(current_process && current_process->T == 0) {
+          delete current_process;
           current_process = NULL;
         }
         current_time++; 
