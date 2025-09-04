@@ -22,7 +22,7 @@ class Queue{
     }
 
     bool isfull(){
-      return tail == capacity - 1;
+      return tail == capacity;
     }
 
     bool isempty(){
@@ -35,14 +35,10 @@ class Queue{
     }
     void enqueue(int x){
       if(capacity == 0){
-        new_queue();
-        queue[tail++] = x;
-        return;
+        new_queue(); 
       }
       else if(isfull()){
-        resize();
-        queue[tail++] = x;
-        return;
+        resize(); 
       }
       queue[tail++] = x;
     }
